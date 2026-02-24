@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dulin Yensith | Portfolio</title>
+    
+    <link rel="icon" type="image/jpeg" href="My Photo.jpeg">
+
     <style>
         body {
             background-color: #0d0d0f;
@@ -23,17 +26,16 @@
             padding: 35px;
             border-radius: 30px;
             text-align: center;
-            /* ෆෝන් එකේදී පළල 100% වෙන අතර උපරිමය 360px වේ */
             width: 100%;
             max-width: 360px; 
             box-shadow: 0 20px 40px rgba(0,0,0,0.7);
             transition: max-width 0.5s ease-in-out;
         }
 
-        /* පරිගණක තිර (Desktop) සඳහා විශේෂ වෙනස්කම් */
+        /* පරිගණක තිර (Desktop) සඳහා Full layout පෙනුම */
         @media (min-width: 1024px) {
             .profile-card {
-                max-width: 90%; /* පරිගණකයේදී පළල වැඩි වේ */
+                max-width: 90%; 
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -126,7 +128,6 @@
 
         .read-more-btn:hover { background: #fff; }
 
-        /* Overlay Styles */
         .overlay {
             display: none;
             position: fixed;
