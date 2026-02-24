@@ -23,8 +23,37 @@
             padding: 35px;
             border-radius: 30px;
             text-align: center;
-            width: 360px;
+            /* ෆෝන් එකේදී පළල 100% වෙන අතර උපරිමය 360px වේ */
+            width: 100%;
+            max-width: 360px; 
             box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+            transition: max-width 0.5s ease-in-out;
+        }
+
+        /* පරිගණක තිර (Desktop) සඳහා විශේෂ වෙනස්කම් */
+        @media (min-width: 1024px) {
+            .profile-card {
+                max-width: 90%; /* පරිගණකයේදී පළල වැඩි වේ */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .content-wrapper {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .content-box {
+                flex: 1;
+                min-width: 300px;
+                max-width: 400px;
+            }
         }
 
         .image-box {
@@ -45,7 +74,7 @@
         }
 
         h1 {
-            font-size: 24px;
+            font-size: 28px;
             margin: 5px 0;
             color: #fff;
         }
@@ -53,8 +82,8 @@
         .skill-tag {
             display: inline-block;
             color: #00d2ff;
-            padding: 4px 12px;
-            font-size: 11px;
+            padding: 6px 15px;
+            font-size: 13px;
             font-weight: bold;
             border: 1px solid #00d2ff;
             border-radius: 5px;
@@ -64,40 +93,40 @@
         .content-box {
             text-align: left;
             background: #202024;
-            padding: 15px;
+            padding: 20px;
             border-radius: 12px;
             margin-bottom: 12px;
             border-left: 4px solid #00d2ff;
         }
 
         .content-box h3 {
-            margin: 0 0 5px 0;
-            font-size: 16px;
+            margin: 0 0 8px 0;
+            font-size: 18px;
         }
 
         .content-box p {
             margin: 0;
-            font-size: 13px;
+            font-size: 14px;
             color: #999;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .read-more-btn {
             background: #00d2ff;
             color: #000;
             border: none;
-            padding: 5px 10px;
+            padding: 8px 15px;
             border-radius: 5px;
-            font-size: 11px;
+            font-size: 12px;
             font-weight: bold;
             cursor: pointer;
             margin-top: 10px;
             transition: 0.3s;
-            display: block;
         }
 
         .read-more-btn:hover { background: #fff; }
 
+        /* Overlay Styles */
         .overlay {
             display: none;
             position: fixed;
@@ -135,29 +164,34 @@
             margin-top: 20px;
             border-top: 1px solid #333;
             padding-top: 20px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
         }
 
         .contact-link {
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 10px;
             background: #252529;
             color: #fff;
             text-decoration: none;
-            padding: 10px;
+            padding: 12px 20px;
             border-radius: 10px;
-            margin-bottom: 10px;
             font-size: 14px;
             transition: 0.3s;
+            min-width: 200px;
+            justify-content: center;
         }
 
         .contact-link:hover { background: #00d2ff; color: #000; }
 
         .footer {
-            margin-top: 20px;
-            font-size: 10px;
-            color: #444;
+            margin-top: 30px;
+            font-size: 11px;
+            color: #555;
             letter-spacing: 2px;
         }
     </style>
@@ -172,20 +206,22 @@
         <h1>Dulin Yensith</h1>
         <div class="skill-tag">ICT & CRICKET ENTHUSIAST</div>
 
-        <div class="content-box">
-            <h3>👤 About Me</h3>
-            <p>I am Dulin Yensith, a tech-savvy student with a deep passion for Cricket. I love exploring new technologies and staying active on the field.</p>
-        </div>
+        <div class="content-wrapper">
+            <div class="content-box">
+                <h3>👤 About Me</h3>
+                <p>I am Dulin Yensith, a tech-savvy student with a deep passion for Cricket. I love exploring new technologies and staying active on the field.</p>
+            </div>
 
-        <div class="content-box">
-            <h3>🏏 Cricket Passion</h3>
-            <p>Cricket is more than just a game to me; it's a way of life that teaches teamwork and discipline.</p>
-            <button class="read-more-btn" onclick="openOverlay()">READ MORE ABOUT CRICKET</button>
-        </div>
+            <div class="content-box">
+                <h3>🏏 Cricket Passion</h3>
+                <p>Cricket is more than just a game to me; it's a way of life that teaches teamwork and discipline.</p>
+                <button class="read-more-btn" onclick="openOverlay()">READ MORE ABOUT CRICKET</button>
+            </div>
 
-        <div class="content-box">
-            <h3>💻 Computer & ICT</h3>
-            <p>I am highly skilled in Information Technology and Computing.</p>
+            <div class="content-box">
+                <h3>💻 Computer & ICT</h3>
+                <p>I am highly skilled in Information Technology and Computing. I enjoy coding and learning new software developments.</p>
+            </div>
         </div>
 
         <div class="contact-section">
