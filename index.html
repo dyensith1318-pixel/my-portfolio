@@ -82,7 +82,58 @@
             line-height: 1.5;
         }
 
-        /* අලුතින් එක් කළ Contact Style එක */
+        /* Read More Button */
+        .read-more-btn {
+            background: #00d2ff;
+            color: #000;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .read-more-btn:hover {
+            background: #fff;
+        }
+
+        /* Overlay Styles */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .overlay-content {
+            background: #18181b;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 500px;
+            text-align: left;
+            border: 1px solid #00d2ff;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 25px;
+            color: #fff;
+            cursor: pointer;
+        }
+
         .contact-section {
             margin-top: 20px;
             border-top: 1px solid #333;
@@ -128,13 +179,19 @@
         <div class="skill-tag">ICT & CRICKET ENTHUSIAST</div>
 
         <div class="content-box">
-            <h3>💻 Computer & ICT</h3>
-            <p>I am highly skilled in Information Technology and Computing.</p>
+            <h3>👤 About Me</h3>
+            <p>I am Dulin Yensith, a tech-savvy student with a deep passion for Cricket. I love exploring new technologies and staying active on the field.</p>
         </div>
 
         <div class="content-box">
-            <h3>🏏 Cricket</h3>
-            <p>Cricket is my passion and my favorite sport.</p>
+            <h3>🏏 Cricket Passion</h3>
+            <p>Cricket is more than just a game to me; it's a way of life that teaches teamwork and discipline.</p>
+            <button class="read-more-btn" onclick="openOverlay()">READ MORE ABOUT CRICKET</button>
+        </div>
+
+        <div class="content-box">
+            <h3>💻 Computer & ICT</h3>
+            <p>I am highly skilled in Information Technology and Computing.</p>
         </div>
 
         <div class="contact-section">
@@ -148,6 +205,40 @@
 
         <div class="footer">DESIGNED BY DULIN YENSITH</div>
     </div>
+
+    <div class="overlay" id="cricketOverlay">
+        <div class="overlay-content">
+            <span class="close-btn" onclick="closeOverlay()">&times;</span>
+            <h2 style="color: #00d2ff;">🏏 My Journey with Cricket</h2>
+            <p style="color: #ccc; font-size: 14px; line-height: 1.6;">
+                Cricket is one of the most popular sports in the world, and for me, it is my greatest passion. I love the strategic nature of the game, whether it's batting, bowling, or fielding. 
+                <br><br>
+                <b>What I Love About Cricket:</b><br>
+                * <b>Team Spirit:</b> It teaches us how to work together to achieve a common goal.<br>
+                * <b>Focus:</b> Every ball requires 100% concentration, which helps in my ICT studies too.<br>
+                * <b>Discipline:</b> Hard work on the field reflects in my daily life.<br><br>
+                In my free time, I never miss a chance to play a match or watch my favorite players in action. It keeps me energized and motivated!
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function openOverlay() {
+            document.getElementById("cricketOverlay").style.display = "flex";
+        }
+
+        function closeOverlay() {
+            document.getElementById("cricketOverlay").style.display = "none";
+        }
+
+        // Close overlay when clicking outside the content
+        window.onclick = function(event) {
+            var overlay = document.getElementById("cricketOverlay");
+            if (event.target == overlay) {
+                overlay.style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 </html>
