@@ -4,82 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dulin Yensith | Portfolio</title>
-    
     <link rel="icon" type="image/jpeg" href="My Photo.jpeg">
-
     <style>
         body {
             background-color: #0d0d0f;
             color: #ffffff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        /* දකුණු පස ඇති නිල් පාට ස්ථාවර තීරුව */
+        .sidebar {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 80px; /* තීරුව සිහින් කළා */
+            height: 100vh;
+            background-color: #0044ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* යට සිට උඩට ඇති නම */
+        .sidebar-name {
+            transform: rotate(-90deg); /* නම හරස් අතට හරවන ලදී */
+            white-space: nowrap;
+            font-size: 45px; /* නම පිරී පෙනෙන ලෙස ලොකු කළා */
+            font-weight: 800;
+            letter-spacing: 5px;
+            color: white;
+            text-transform: uppercase;
+            font-family: 'Arial Black', sans-serif;
+        }
+
+        /* ප්‍රධාන අන්තර්ගතය ඇති කොටස */
+        .main-content {
+            flex: 1;
+            margin-right: 80px; /* නිල් තීරුවට ඉඩ තැබීම */
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
-            padding: 20px;
+            padding: 40px;
         }
 
         .profile-card {
             background: #18181b;
             border: 1px solid #2d2d30;
-            padding: 35px;
+            padding: 40px;
             border-radius: 30px;
             text-align: center;
             width: 100%;
-            max-width: 360px; 
+            max-width: 900px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.7);
-            transition: max-width 0.5s ease-in-out;
         }
 
-        /* පරිගණක තිර (Desktop) සඳහා Full layout පෙනුම */
-        @media (min-width: 1024px) {
-            .profile-card {
-                max-width: 90%; 
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-            
-            .content-wrapper {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 20px;
-                width: 100%;
-                margin-top: 20px;
-            }
-
-            .content-box {
-                flex: 1;
-                min-width: 300px;
-                max-width: 400px;
-            }
+        /* පරිගණක තිර වලදී තොරතුරු පෙනෙන ආකාරය */
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
 
         .image-box {
-            width: 155px;
-            height: 155px;
+            width: 160px;
+            height: 160px;
             margin: 0 auto 20px;
             border-radius: 50%;
-            border: 3px solid #00d2ff;
+            border: 4px solid #00d2ff;
             overflow: hidden;
-            background: #222;
         }
 
         .image-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: top center;
         }
 
-        h1 {
-            font-size: 28px;
-            margin: 5px 0;
-            color: #fff;
-        }
+        h1 { font-size: 32px; margin-bottom: 10px; }
 
         .skill-tag {
             display: inline-block;
@@ -89,7 +96,7 @@
             font-weight: bold;
             border: 1px solid #00d2ff;
             border-radius: 5px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .content-box {
@@ -97,168 +104,108 @@
             background: #202024;
             padding: 20px;
             border-radius: 12px;
-            margin-bottom: 12px;
-            border-left: 4px solid #00d2ff;
+            border-left: 5px solid #00d2ff;
         }
 
-        .content-box h3 {
-            margin: 0 0 8px 0;
-            font-size: 18px;
-        }
-
-        .content-box p {
-            margin: 0;
-            font-size: 14px;
-            color: #999;
-            line-height: 1.6;
-        }
-
-        .read-more-btn {
-            background: #00d2ff;
-            color: #000;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: 0.3s;
-        }
-
-        .read-more-btn:hover { background: #fff; }
-
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .overlay-content {
-            background: #18181b;
-            padding: 30px;
-            border-radius: 20px;
-            max-width: 500px;
-            text-align: left;
-            border: 1px solid #00d2ff;
-            position: relative;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 25px;
-            color: #fff;
-            cursor: pointer;
-        }
+        .content-box h3 { margin: 0 0 10px 0; color: #00d2ff; }
 
         .contact-section {
-            margin-top: 20px;
-            border-top: 1px solid #333;
-            padding-top: 20px;
-            width: 100%;
+            margin-top: 30px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
+            gap: 15px;
+            border-top: 1px solid #333;
+            padding-top: 20px;
         }
 
         .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
             background: #252529;
-            color: #fff;
+            color: white;
             text-decoration: none;
-            padding: 12px 20px;
+            padding: 12px 25px;
             border-radius: 10px;
-            font-size: 14px;
             transition: 0.3s;
-            min-width: 200px;
-            justify-content: center;
         }
 
-        .contact-link:hover { background: #00d2ff; color: #000; }
+        .contact-link:hover { background: #00d2ff; color: black; }
 
-        .footer {
-            margin-top: 30px;
-            font-size: 11px;
-            color: #555;
-            letter-spacing: 2px;
+        /* Overlay Styles */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center; align-items: center;
+        }
+
+        .overlay-content {
+            background: #18181b; padding: 30px; border-radius: 20px;
+            max-width: 500px; border: 1px solid #00d2ff; position: relative;
+        }
+
+        .close-btn { position: absolute; top: 10px; right: 20px; font-size: 30px; cursor: pointer; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .sidebar { width: 50px; }
+            .sidebar-name { font-size: 30px; }
+            .main-content { margin-right: 50px; padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="profile-card">
-        <div class="image-box">
-            <img src="My Photo.jpeg" alt="Dulin Yensith">
-        </div>
+    <div class="sidebar">
+        <div class="sidebar-name">Dulin Yensith</div>
+    </div>
 
-        <h1>Dulin Yensith</h1>
-        <div class="skill-tag">ICT & CRICKET ENTHUSIAST</div>
-
-        <div class="content-wrapper">
-            <div class="content-box">
-                <h3>👤 About Me</h3>
-                <p>I am Dulin Yensith, a tech-savvy student with a deep passion for Cricket. I love exploring new technologies and staying active on the field.</p>
+    <div class="main-content">
+        <div class="profile-card">
+            <div class="image-box">
+                <img src="My Photo.jpeg" alt="Dulin Yensith">
             </div>
 
-            <div class="content-box">
-                <h3>🏏 Cricket Passion</h3>
-                <p>Cricket is more than just a game to me; it's a way of life that teaches teamwork and discipline.</p>
-                <button class="read-more-btn" onclick="openOverlay()">READ MORE ABOUT CRICKET</button>
+            <h1>Dulin Yensith</h1>
+            <div class="skill-tag">ICT & CRICKET ENTHUSIAST</div>
+
+            <div class="content-wrapper">
+                <div class="content-box">
+                    <h3>👤 About Me</h3>
+                    <p>I am Dulin Yensith, a tech-savvy student with a deep passion for Cricket. I love exploring new technologies.</p>
+                </div>
+                <div class="content-box">
+                    <h3>🏏 Cricket Passion</h3>
+                    <p>Cricket is more than just a game; it's a way of life that teaches teamwork and discipline.</p>
+                    <button style="margin-top:10px; background:#00d2ff; border:none; padding:5px 10px; cursor:pointer; font-weight:bold;" onclick="openOverlay()">READ MORE</button>
+                </div>
+                <div class="content-box">
+                    <h3>💻 Computer & ICT</h3>
+                    <p>Highly skilled in IT and Computing. I love solving technical problems and building things.</p>
+                </div>
             </div>
 
-            <div class="content-box">
-                <h3>💻 Computer & ICT</h3>
-                <p>I am highly skilled in Information Technology and Computing. I enjoy coding and learning new software developments.</p>
+            <div class="contact-section">
+                <a href="https://wa.me/94764438784" class="contact-link" target="_blank">📱 WhatsApp</a>
+                <a href="mailto:dyensith1318@gmail.com" class="contact-link">📧 Email</a>
             </div>
+            
+            <div style="margin-top: 20px; font-size: 10px; color: #555;">DESIGNED BY DULIN YENSITH</div>
         </div>
-
-        <div class="contact-section">
-            <a href="https://wa.me/94764438784" class="contact-link" target="_blank">
-                📱 WhatsApp: 076 443 8784
-            </a>
-            <a href="mailto:dyensith1318@gmail.com" class="contact-link">
-                📧 Email: dyensith1318@gmail.com
-            </a>
-        </div>
-
-        <div class="footer">DESIGNED BY DULIN YENSITH</div>
     </div>
 
     <div class="overlay" id="cricketOverlay">
         <div class="overlay-content">
             <span class="close-btn" onclick="closeOverlay()">&times;</span>
-            <h2 style="color: #00d2ff;">🏏 My Journey with Cricket</h2>
-            <p style="color: #ccc; font-size: 14px; line-height: 1.6;">
-                Cricket is my greatest passion. I love the strategy and the teamwork involved.
-                <br><br>
-                * <b>Team Spirit:</b> Working together for a win.<br>
-                * <b>Focus:</b> Keeping my eye on the goal.<br>
-                * <b>Discipline:</b> Hard work on and off the field.<br><br>
-                Playing cricket keeps me motivated and balanced with my ICT studies.
-            </p>
+            <h2 style="color: #00d2ff;">🏏 My Journey</h2>
+            <p>Cricket keeps me motivated and balanced with my ICT studies. I value Team Spirit, Focus, and Discipline.</p>
         </div>
     </div>
 
     <script>
         function openOverlay() { document.getElementById("cricketOverlay").style.display = "flex"; }
         function closeOverlay() { document.getElementById("cricketOverlay").style.display = "none"; }
-        window.onclick = function(event) {
-            var overlay = document.getElementById("cricketOverlay");
-            if (event.target == overlay) { overlay.style.display = "none"; }
-        }
     </script>
 </body>
 </html>
