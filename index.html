@@ -23,7 +23,7 @@
         /* Banner Section */
         .header-banner {
             width: 100%;
-            height: 380px;
+            height: 300px;
             overflow: hidden;
             background-color: #000;
         }
@@ -35,15 +35,15 @@
             opacity: 0.8;
         }
 
-        /* Container */
+        /* Main Container */
         .container {
-            width: 90%;
+            width: 95%;
             max-width: 1100px;
             background: #ffffff;
-            margin-top: -110px;
+            margin-top: -80px;
             position: relative;
-            border-radius: 50px;
-            padding: 70px 50px;
+            border-radius: 40px;
+            padding: 50px 30px;
             box-shadow: 0 40px 100px rgba(0,0,0,0.06);
             box-sizing: border-box;
             z-index: 10;
@@ -53,8 +53,8 @@
         .profile-section {
             display: flex;
             align-items: flex-start;
-            gap: 60px;
-            margin-bottom: 50px;
+            gap: 50px;
+            margin-bottom: 40px;
             flex-wrap: wrap;
         }
 
@@ -62,6 +62,7 @@
             display: flex;
             flex-direction: column;
             width: 380px;
+            max-width: 100%;
             flex-shrink: 0;
         }
 
@@ -70,17 +71,17 @@
             position: relative;
             width: 100%;
             height: 220px;
-            margin-bottom: 45px; /* නම පල්ලෙහාට කිරීමට ඉඩ තැබුවා */
+            margin-bottom: 35px;
         }
 
         .main-img {
             position: absolute;
             top: 0;
             left: 0;
-            width: 190px;
-            height: 190px;
+            width: 170px;
+            height: 170px;
             border-radius: 50%;
-            border: 6px solid #1e60ff; /* නිල් බෝඩරය */
+            border: 6px solid #1e60ff;
             padding: 5px;
             background: white;
             box-shadow: 0 15px 35px rgba(30, 96, 255, 0.2);
@@ -90,27 +91,27 @@
 
         .sub-img {
             position: absolute;
-            top: 40px; 
-            left: 160px; 
-            width: 175px;
-            height: 175px;
-            border-radius: 40px;
-            border: 8px solid #ffffff;
+            top: 35px; 
+            left: 140px; 
+            width: 165px;
+            height: 165px;
+            border-radius: 35px;
+            border: 6px solid #ffffff;
             box-shadow: 0 20px 45px rgba(0,0,0,0.1);
             object-fit: cover;
             z-index: 2;
         }
 
-        /* --- Name Design (පල්ලෙහාට කර ලස්සන කළා) --- */
+        /* --- නම (ඔයා ඉල්ලපු Gradient Design එක) --- */
         .name-container {
-            padding-left: 10px;
-            position: relative;
+            padding-left: 5px;
         }
 
         .name-container h1 {
-            font-size: 44px;
+            font-size: 42px;
             font-weight: 800;
             margin: 0;
+            /* මෙන්න ඒ Gradient කලර් එක */
             background: linear-gradient(90deg, #0f172a, #1e60ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -128,26 +129,27 @@
             text-transform: uppercase;
         }
 
-        /* About Section */
+        /* About Card */
         .about-card {
             flex: 1;
-            min-width: 320px;
+            min-width: 300px;
             background: #f8faff;
-            padding: 35px;
-            border-radius: 35px;
+            padding: 30px;
+            border-radius: 30px;
             border: 1px solid #edf2f7;
         }
 
         .about-card h2 {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 800;
             margin-top: 0;
             color: #1e60ff;
+            margin-bottom: 15px;
         }
 
         .about-card p {
-            font-size: 17.5px;
-            line-height: 1.9;
+            font-size: 16.5px;
+            line-height: 1.8;
             color: #475569;
             text-align: justify;
         }
@@ -157,63 +159,60 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 25px;
-            margin-top: 40px;
+            margin-top: 30px;
         }
 
         .expertise-box {
-            padding: 35px;
-            border-radius: 30px;
+            padding: 30px;
+            border-radius: 25px;
             background: #ffffff;
             border: 1px solid #f1f5f9;
-            transition: 0.4s ease;
-        }
-
-        .expertise-box:hover {
-            transform: translateY(-8px);
-            border-color: #1e60ff;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+            transition: 0.3s ease;
         }
 
         .expertise-box i {
-            font-size: 30px;
+            font-size: 28px;
             color: #1e60ff;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             display: block;
+        }
+
+        /* Responsive Settings for Mobile */
+        @media (max-width: 768px) {
+            .header-banner { height: 220px; }
+            .container { padding: 40px 20px; }
+            .profile-section { flex-direction: column; align-items: center; text-align: center; }
+            .profile-group { width: 100%; align-items: center; }
+            .photo-stack { width: 100%; max-width: 300px; margin-left: -20px; }
+            .name-container h1 { font-size: 36px; }
+            .expertise-grid { grid-template-columns: 1fr; }
         }
 
         /* WhatsApp Button */
         .whatsapp-float {
             position: fixed;
-            bottom: 40px;
-            right: 40px;
-            width: 65px;
-            height: 65px;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
             background: #25d366;
             color: white;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 35px;
-            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3);
+            font-size: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
             z-index: 100;
             text-decoration: none;
-            transition: 0.3s;
         }
 
         .footer {
-            margin: 60px 0;
-            font-size: 12px;
+            margin: 40px 0;
+            font-size: 11px;
             color: #94a3b8;
             font-weight: 700;
             letter-spacing: 2px;
-        }
-
-        @media (max-width: 850px) {
-            .profile-section { flex-direction: column; align-items: center; text-align: center; }
-            .profile-group { width: 100%; align-items: center; }
-            .expertise-grid { grid-template-columns: 1fr; }
-            .sub-img { left: 140px; }
         }
     </style>
 </head>
@@ -247,34 +246,33 @@
                     I am Dulin Yensith, a highly dedicated student and a technology enthusiast. 
                     Cricket is more than just a sport to me; it's a lifestyle that has taught me 
                     discipline and teamwork. In the digital world, I am passionate about 
-                    Information Technology and building innovative solutions. My goal is to 
-                    combine my love for sports and tech to create something impactful for the future.
+                    Information Technology and building innovative solutions.
                 </p>
             </div>
         </div>
 
-        <h2 style="font-size: 22px; font-weight: 800; margin-bottom: 30px; letter-spacing: 1px; color: #0f172a;">MY EXPERTISE</h2>
+        <h2 style="font-size: 20px; font-weight: 800; margin-bottom: 25px; color: #0f172a;">MY EXPERTISE</h2>
 
         <div class="expertise-grid">
             <div class="expertise-box">
                 <i class="fas fa-cricket-bat-ball"></i>
-                <h3 style="margin: 0 0 10px 0;">My Lifestyle</h3>
-                <p style="margin: 0; color: #64748b;">Cricket has taught me the importance of focus and teamwork in every aspect of life.</p>
+                <h3>My Lifestyle</h3>
+                <p style="margin: 0; color: #64748b; font-size: 14px;">Cricket has taught me the importance of focus and teamwork.</p>
             </div>
             <div class="expertise-box">
                 <i class="fas fa-laptop-code"></i>
                 <h3>Technology & ICT</h3>
-                <p style="margin: 0; color: #64748b;">Highly skilled in Computing and IT. I am driven by the passion of learning new tech daily.</p>
+                <p style="margin: 0; color: #64748b; font-size: 14px;">Highly skilled in Computing and IT. I love learning new tech.</p>
             </div>
             <div class="expertise-box">
                 <i class="fas fa-chart-line"></i>
                 <h3>Cricket Journey</h3>
-                <p style="margin: 0; color: #64748b;">Every game is a new lesson in strategy, resilience, and perseverance on the field.</p>
+                <p style="margin: 0; color: #64748b; font-size: 14px;">Every game is a lesson in strategy and resilience.</p>
             </div>
             <div class="expertise-box">
                 <i class="fas fa-rocket"></i>
                 <h3>Future Goals</h3>
-                <p style="margin: 0; color: #64748b;">Mastering the digital world to create innovative and impactful solutions for the future.</p>
+                <p style="margin: 0; color: #64748b; font-size: 14px;">Creating innovative solutions for the future digital world.</p>
             </div>
         </div>
     </div>
