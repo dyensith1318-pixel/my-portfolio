@@ -7,205 +7,242 @@
     <link rel="icon" type="image/jpeg" href="My Photo.jpeg">
     <style>
         body {
-            background-color: #0d0d0f;
+            background-color: #1a1a1d;
             color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
+            justify-content: center;
         }
 
-        /* දකුණු පස ඇති නිල් පාට ස්ථාවර තීරුව */
-        .sidebar {
+        /* දකුණු පස ඇති නිල් පාට නම සහිත තීරුව */
+        .desktop-sidebar {
             position: fixed;
             right: 0;
             top: 0;
-            width: 80px; /* තීරුව සිහින් කළා */
+            width: 80px;
             height: 100vh;
-            background-color: #0044ff;
+            background: linear-gradient(180deg, #1e60ff, #001a57);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1000;
         }
 
-        /* යට සිට උඩට ඇති නම */
-        .sidebar-name {
-            transform: rotate(-90deg); /* නම හරස් අතට හරවන ලදී */
+        .sidebar-text {
+            transform: rotate(-90deg);
             white-space: nowrap;
-            font-size: 45px; /* නම පිරී පෙනෙන ලෙස ලොකු කළා */
-            font-weight: 800;
-            letter-spacing: 5px;
+            font-size: 45px;
+            font-weight: 900;
+            letter-spacing: 3px;
             color: white;
             text-transform: uppercase;
-            font-family: 'Arial Black', sans-serif;
         }
 
-        /* ප්‍රධාන අන්තර්ගතය ඇති කොටස */
-        .main-content {
-            flex: 1;
-            margin-right: 80px; /* නිල් තීරුවට ඉඩ තැබීම */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 40px;
-        }
-
-        .profile-card {
-            background: #18181b;
-            border: 1px solid #2d2d30;
-            padding: 40px;
-            border-radius: 30px;
-            text-align: center;
+        /* ප්‍රධාන කාඩ් එක */
+        .container {
             width: 100%;
-            max-width: 900px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+            max-width: 1000px;
+            margin: 40px 100px 40px 20px;
+            background: #121214;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.5);
         }
 
-        /* පරිගණක තිර වලදී තොරතුරු පෙනෙන ආකාරය */
-        .content-wrapper {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+        /* Profile Section */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
         }
 
         .image-box {
-            width: 160px;
-            height: 160px;
-            margin: 0 auto 20px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            border: 4px solid #00d2ff;
+            border: 4px solid #1e60ff;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
         .image-box img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* මුහුණ කැපෙන්නේ නැතුව ලස්සනට පේන්න */
         }
 
-        h1 { font-size: 32px; margin-bottom: 10px; }
+        .profile-info h1 {
+            font-size: 45px;
+            margin: 0;
+            font-weight: 800;
+        }
 
-        .skill-tag {
-            display: inline-block;
-            color: #00d2ff;
-            padding: 6px 15px;
-            font-size: 13px;
-            font-weight: bold;
-            border: 1px solid #00d2ff;
-            border-radius: 5px;
+        .profile-info p {
+            color: #ccc;
+            font-size: 18px;
+            margin: 5px 0;
+            letter-spacing: 1px;
+        }
+
+        /* Content Grid */
+        h2.section-title {
+            font-size: 24px;
             margin-bottom: 20px;
+            border-left: 5px solid #1e60ff;
+            padding-left: 15px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
 
         .content-box {
-            text-align: left;
-            background: #202024;
-            padding: 20px;
+            background: #1c1c1f;
+            padding: 25px;
             border-radius: 12px;
-            border-left: 5px solid #00d2ff;
-        }
-
-        .content-box h3 { margin: 0 0 10px 0; color: #00d2ff; }
-
-        .contact-section {
-            margin-top: 30px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            border-top: 1px solid #333;
-            padding-top: 20px;
-        }
-
-        .contact-link {
-            background: #252529;
-            color: white;
-            text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 10px;
+            border-bottom: 3px solid transparent;
             transition: 0.3s;
         }
 
-        .contact-link:hover { background: #00d2ff; color: black; }
-
-        /* Overlay Styles */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            justify-content: center; align-items: center;
+        .content-box:hover {
+            background: #252529;
+            border-bottom: 3px solid #1e60ff;
+            transform: translateY(-5px);
         }
 
-        .overlay-content {
-            background: #18181b; padding: 30px; border-radius: 20px;
-            max-width: 500px; border: 1px solid #00d2ff; position: relative;
+        .content-box h3 {
+            font-size: 18px;
+            margin-top: 0;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .close-btn { position: absolute; top: 10px; right: 20px; font-size: 30px; cursor: pointer; }
+        .content-box p {
+            font-size: 14px;
+            color: #aaa;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
 
-        /* Mobile Adjustments */
-        @media (max-width: 768px) {
-            .sidebar { width: 50px; }
-            .sidebar-name { font-size: 30px; }
-            .main-content { margin-right: 50px; padding: 20px; }
+        /* Contact Section */
+        .contact-section {
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            padding-top: 30px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-blue {
+            background: #1e60ff;
+            color: white;
+        }
+
+        .btn-white {
+            background: white;
+            color: black;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #444;
+            text-align: left;
+        }
+
+        /* Mobile View */
+        @media (max-width: 850px) {
+            .desktop-sidebar { display: none; }
+            .container { margin: 20px; padding: 25px; }
+            .profile-header { flex-direction: column; text-align: center; }
+            .content-grid { grid-template-columns: 1fr; }
+            .profile-info h1 { font-size: 32px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="sidebar">
-        <div class="sidebar-name">Dulin Yensith</div>
+    <div class="desktop-sidebar">
+        <div class="sidebar-text">Dulin Yensith</div>
     </div>
 
-    <div class="main-content">
-        <div class="profile-card">
+    <div class="container">
+        <div class="profile-header">
             <div class="image-box">
                 <img src="My Photo.jpeg" alt="Dulin Yensith">
             </div>
-
-            <h1>Dulin Yensith</h1>
-            <div class="skill-tag">ICT & CRICKET ENTHUSIAST</div>
-
-            <div class="content-wrapper">
-                <div class="content-box">
-                    <h3>👤 About Me</h3>
-                    <p>I am Dulin Yensith, a tech-savvy student with a deep passion for Cricket. I love exploring new technologies.</p>
-                </div>
-                <div class="content-box">
-                    <h3>🏏 Cricket Passion</h3>
-                    <p>Cricket is more than just a game; it's a way of life that teaches teamwork and discipline.</p>
-                    <button style="margin-top:10px; background:#00d2ff; border:none; padding:5px 10px; cursor:pointer; font-weight:bold;" onclick="openOverlay()">READ MORE</button>
-                </div>
-                <div class="content-box">
-                    <h3>💻 Computer & ICT</h3>
-                    <p>Highly skilled in IT and Computing. I love solving technical problems and building things.</p>
-                </div>
+            <div class="profile-info">
+                <h1>Dulin Yensith</h1>
+                <p>ICT & CRICKET ENTHUSIAST</p>
             </div>
+        </div>
 
-            <div class="contact-section">
-                <a href="https://wa.me/94764438784" class="contact-link" target="_blank">📱 WhatsApp</a>
-                <a href="mailto:dyensith1318@gmail.com" class="contact-link">📧 Email</a>
+        <h2 class="section-title">Main Content</h2>
+
+        <div class="content-grid">
+            <div class="content-box">
+                <h3>👤 About Me</h3>
+                <p>I am Dulin Yensith, a tech-savvy student with a passion for Cricket. I love exploring new technologies, coding, and building digital solutions.</p>
             </div>
-            
-            <div style="margin-top: 20px; font-size: 10px; color: #555;">DESIGNED BY DULIN YENSITH</div>
+            <div class="content-box">
+                <h3>🏏 My Lifestyle</h3>
+                <p>Cricket is my lifestyle. It has taught me the importance of discipline, focus, and the power of working together as a team.</p>
+            </div>
+            <div class="content-box">
+                <h3>📈 Cricket Journey</h3>
+                <p>My journey in cricket is all about learning. Every game is a new lesson in strategy and perseverance on the field.</p>
+            </div>
+            <div class="content-box">
+                <h3>🏆 Team Spirit</h3>
+                <p>Working together with others to achieve a common goal is something I value highly, both in sports and in technology.</p>
+            </div>
+            <div class="content-box">
+                <h3>💻 Technology & ICT</h3>
+                <p>Highly skilled in Computing and Information Technology. I am dedicated to learning new software developments every day.</p>
+            </div>
+            <div class="content-box">
+                <h3>🚀 Future Goals</h3>
+                <p>I aim to master the digital world and create something innovative that combines my love for tech and sport.</p>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h2 class="section-title">Contact Section</h2>
+            <div class="btn-group">
+                <a href="https://wa.me/94764438784" class="btn btn-blue" target="_blank">WhatsApp Me</a>
+                <a href="mailto:dyensith1318@gmail.com" class="btn btn-white">Email Me</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            © DESIGNED BY DULIN YENSITH
         </div>
     </div>
 
-    <div class="overlay" id="cricketOverlay">
-        <div class="overlay-content">
-            <span class="close-btn" onclick="closeOverlay()">&times;</span>
-            <h2 style="color: #00d2ff;">🏏 My Journey</h2>
-            <p>Cricket keeps me motivated and balanced with my ICT studies. I value Team Spirit, Focus, and Discipline.</p>
-        </div>
-    </div>
-
-    <script>
-        function openOverlay() { document.getElementById("cricketOverlay").style.display = "flex"; }
-        function closeOverlay() { document.getElementById("cricketOverlay").style.display = "none"; }
-    </script>
 </body>
 </html>
